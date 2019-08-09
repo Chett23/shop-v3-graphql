@@ -1,0 +1,39 @@
+type Query {
+  items: [Item!]!
+  cart: [Item!]!
+  me: User
+}
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+  addItem(name: String!, description: String!, price: Float!, stock: Int!, imgUrl: String!): Item
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+  cart: [Item!]!
+  roles: [Role!]!
+}
+
+type Item {
+  id: ID!
+  name: String!
+  description: String!
+  price: Float!
+  qty: Int
+  stock: Int!
+  imgUrl: String!
+}
+
+enum Role {
+  USER
+  ADMIN
+}
