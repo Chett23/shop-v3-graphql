@@ -17,6 +17,18 @@ type Item {
   imgUrl: String!
 }
 
+type Order {
+  id: ID! @id
+  item: Item!
+  status: Status!
+}
+
+enum Status {
+  InCart
+  Shipped
+  Delivered
+}
+
 enum Role {
   USER
   ADMIN

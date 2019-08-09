@@ -19,8 +19,8 @@ type User {
   id: ID!
   email: String!
   name: String!
-  cart: [Item!]!
   roles: [Role!]!
+  orders: [Order!]!
 }
 
 type Item {
@@ -33,6 +33,20 @@ type Item {
   imgUrl: String!
 }
 
+## The user adds an item to its order list, the user sees its cart through 
+## query of orders where: status === InCart.
+
+type Order {
+  id: ID!
+  item: Item!
+  status: Status!
+}
+
+enum Status {
+  InCart
+  Shipped
+  Delivered
+}
 enum Role {
   USER
   ADMIN
