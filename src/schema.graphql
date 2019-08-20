@@ -1,7 +1,8 @@
 type Query {
-  items: [Item!]!
-  cart: [Item!]!
-  me: User
+  inventory: [Item!]!
+  cart: [Order!]!
+  user: User
+  users: [User!]!
 }
 
 type Mutation {
@@ -19,8 +20,9 @@ type User {
   id: ID!
   email: String!
   name: String!
-  roles: [Role!]!
+  role: Role!
   orders: [Order!]!
+  cart: [Order!]!
 }
 
 type Item {
@@ -28,18 +30,23 @@ type Item {
   name: String!
   description: String!
   price: Float!
-  qty: Int
   stock: Int!
   imgUrl: String!
 }
 
+
 ## The user adds an item to its order list, the user sees its cart through 
 ## query of orders where: status === InCart.
+##
+## cart is all orders from a users order array where status === incart.
+##
+##
 
 type Order {
   id: ID!
   item: Item!
   status: Status!
+  qty: Int
 }
 
 enum Status {
@@ -47,7 +54,8 @@ enum Status {
   Shipped
   Delivered
 }
+
 enum Role {
-  USER
-  ADMIN
+  User
+  Admin
 }

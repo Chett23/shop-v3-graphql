@@ -1,23 +1,16 @@
 const { getUserId } = require('../utils')
 
 const Query = {
-  cart(parent, args, context) {
-    const id = getUserId(context)
-    const where = {
-      purchased: false,
-      author: {
-        id,
-      },
-    }
-    return context.prisma.items({ where })
-  },
-  items(parent, args, context) {
+  inventory(parent, args, context) {
     return context.prisma.items({})
   },
-  me(parent, args, context) {
+  user(parent, args, context) {
     const id = getUserId(context)
     return context.prisma.user({ id })
   },
+  users(parent, args, context) {
+    return context.prisma.users()
+  }
 }
 
 module.exports = { Query }
