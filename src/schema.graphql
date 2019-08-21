@@ -3,12 +3,14 @@ type Query {
   cart: [Order!]!
   user: User
   users: [User!]!
+  admins: [User!]!
 }
 
 type Mutation {
-  signup(email: String!, password: String!, name: String!): AuthPayload!
+  signup(email: String!, password: String!, name: String!, role: Role!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   addItem(name: String!, description: String!, price: Float!, stock: Int!, imgUrl: String!): Item
+  addToCart(itemId: ID!, qty: Int!, status: Status!): Order!
 }
 
 type AuthPayload {
