@@ -24,7 +24,7 @@ type User {
   name: String!
   role: Role!
   orders: [Order!]!
-  cart: [Order!]!
+  cart: [Order]!
 }
 
 type Item {
@@ -48,16 +48,16 @@ type Order {
   id: ID!
   item: Item!
   status: Status!
-  qty: Int
+  qty: Int!
 }
 
 enum Status {
-  InCart
-  Shipped
-  Delivered
+  INCART
+  SHIPPED
+  DELIVERED
 }
 
 enum Role {
-  User
-  Admin
+  USER
+  ADMIN
 }

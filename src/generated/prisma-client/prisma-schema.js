@@ -249,7 +249,7 @@ interface Node {
 type Order {
   id: ID!
   item: Item!
-  status: Status!
+  status: Status
   qty: Int!
 }
 
@@ -262,7 +262,7 @@ type OrderConnection {
 input OrderCreateInput {
   id: ID
   item: ItemCreateOneInput!
-  status: Status!
+  status: Status
   qty: Int!
 }
 
@@ -287,7 +287,7 @@ enum OrderOrderByInput {
 
 type OrderPreviousValues {
   id: ID!
-  status: Status!
+  status: Status
   qty: Int!
 }
 
@@ -450,13 +450,13 @@ type Query {
 
 enum Role {
   User
-  Admin
+  ADMIN
 }
 
 enum Status {
-  InCart
-  Shipped
-  Delivered
+  INCART
+  SHIPPED
+  DELIVERED
 }
 
 type Subscription {
@@ -470,7 +470,7 @@ type User {
   email: String!
   password: String!
   name: String!
-  role: Role!
+  role: Role
   orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Order!]
 }
 
@@ -485,7 +485,7 @@ input UserCreateInput {
   email: String!
   password: String!
   name: String!
-  role: Role!
+  role: Role
   orders: OrderCreateManyInput
 }
 
@@ -512,7 +512,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   name: String!
-  role: Role!
+  role: Role
 }
 
 type UserSubscriptionPayload {

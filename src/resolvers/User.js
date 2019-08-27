@@ -1,6 +1,6 @@
 const User = {
   cart: ({ id }, args, context) => {
-    return context.prisma.user({ id }).orders({where: {status: 'InCart'}}).item()
+    return context.prisma.user({ id }).orders({where: {status: 'INCART'}}).item()
   },
 }
 

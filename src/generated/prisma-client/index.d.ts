@@ -193,7 +193,7 @@ export type ItemOrderByInput =
   | "imgUrl_ASC"
   | "imgUrl_DESC";
 
-export type Status = "InCart" | "Shipped" | "Delivered";
+export type Status = "INCART" | "SHIPPED" | "DELIVERED";
 
 export type OrderOrderByInput =
   | "id_ASC"
@@ -203,7 +203,7 @@ export type OrderOrderByInput =
   | "qty_ASC"
   | "qty_DESC";
 
-export type Role = "User" | "Admin";
+export type Role = "User" | "ADMIN";
 
 export type UserOrderByInput =
   | "id_ASC"
@@ -314,7 +314,7 @@ export interface UserWhereInput {
 export interface OrderCreateInput {
   id?: Maybe<ID_Input>;
   item: ItemCreateOneInput;
-  status: Status;
+  status?: Maybe<Status>;
   qty: Int;
 }
 
@@ -449,7 +449,7 @@ export interface UserCreateInput {
   email: String;
   password: String;
   name: String;
-  role: Role;
+  role?: Maybe<Role>;
   orders?: Maybe<OrderCreateManyInput>;
 }
 
@@ -630,7 +630,7 @@ export interface UserPreviousValues {
   email: String;
   password: String;
   name: String;
-  role: Role;
+  role?: Role;
 }
 
 export interface UserPreviousValuesPromise
@@ -736,7 +736,7 @@ export interface BatchPayloadSubscription
 
 export interface Order {
   id: ID_Output;
-  status: Status;
+  status?: Status;
   qty: Int;
 }
 
@@ -953,7 +953,7 @@ export interface User {
   email: String;
   password: String;
   name: String;
-  role: Role;
+  role?: Role;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -1054,7 +1054,7 @@ export interface AggregateOrderSubscription
 
 export interface OrderPreviousValues {
   id: ID_Output;
-  status: Status;
+  status?: Status;
   qty: Int;
 }
 

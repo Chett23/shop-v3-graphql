@@ -12,7 +12,7 @@ const Query = {
     return context.prisma.users()
   },
   admins(parent, args, context) {
-    return context.prisma.users({ where: { role: 'Admin' } })
+    return context.prisma.users({ where: { role: 'ADMIN' } })
   }
 }
 
