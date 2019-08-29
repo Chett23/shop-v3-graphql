@@ -4,6 +4,9 @@ const Query = {
   inventory(parent, args, context) {
     return context.prisma.items({})
   },
+  item(parent, { id }, context) {
+    return context.prisma.item({ id })
+  },
   user(parent, args, context) {
     const id = getUserId(context)
     return context.prisma.user({ id })

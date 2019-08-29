@@ -3,11 +3,11 @@ const jwt = require('jsonwebtoken')
 function getUserId(context) {
   const Authorization = context.request.get('Authorization')
   if(Authorization === '') {
-    let guestId = process.env.GUEST_ID
-    return guestId
+    return process.env.GUEST_ID
   }  
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '')
+    console.log(jwt.verify(token, process.env.APP_SECRET))
     const { userId } = jwt.verify(token, process.env.APP_SECRET)
     return userId
   }
